@@ -1,6 +1,58 @@
 import React from 'react';
 import { useState } from 'react';
-import './bmi.css';
+import styled from 'styled-components';
+const Wrapper = styled.div`
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
+const Form = styled.form`
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+`;
+
+const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+`;
+
+const Label = styled.label`
+  font-weight: bold;
+  margin-bottom: 8px;
+`;
+
+const Input = styled.input`
+  border: none;
+  border-radius: 44px;
+  padding: 8px;
+  font-size: 16px;
+  margin-bottom: 8px;
+`;
+
+const Button = styled.button`
+  background-color: #008080;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #006666;
+  }
+`;
+
+const Result = styled.h2`
+  margin-top: 16px;
+`;
 
 const CalculatorBMI = () => {
   const [height, setHeight] = useState(null);
@@ -15,7 +67,7 @@ const CalculatorBMI = () => {
     let result = getBmi(bmiResult);
     setResult(result);
     setHeight('');
-    setWeight('');
+    ~setWeight('');
   };
 
   const getBmi = (bmi) => {
@@ -26,41 +78,34 @@ const CalculatorBMI = () => {
   };
 
   return (
-    <div>
-      <form id="mainContainer">
-        <div className="height">
-          <label for="height">Height</label>
-          <input
+    <Wrapper>
+      <Form>
+        <InputWrapper>
+          <Label htmlFor="height">Height</Label>
+          <Input
             type="text"
             placeholder="cm.."
             value={height}
             onChange={(e) => setHeight(e.target.value)}
           />
-        </div>
-        <div className="weight">
-          <label for="weight">Weight</label>
-          <input
+        </InputWrapper>
+        <InputWrapper>
+          <Label htmlFor="weight">Weight</Label>
+          <Input
             type="text"
             placeholder="kg.."
             value={weight}
             onChange={(e) => setWeight(e.target.value)}
           />
-        </div>
-        <div className="calculate">
-          <button type="button" onClick={handleBMI}>
-            Calculate BMI
-          </button>
-        </div>
-        <h3>
-          Your BMI is: <h1>{bmi}</h1>
-        </h3>
-        <h3>
-          Your weight : <h2>{result}</h2>
-        </h3>
-      </form>
-    </div>
+        </InputWrapper>
+        <Button type="button" onClick={handleBMI}>
+          Calculate BMI
+        </Button>
+        <Result>Your BMI is: {bmi}</Result>
+        <Result>Your weight: {result}</Result>
+      </Form>
+    </Wrapper>
   );
 };
-{
-}
+
 export default CalculatorBMI;
