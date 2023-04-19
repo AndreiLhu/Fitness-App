@@ -1,10 +1,14 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import Popup from '@/components/Popup';
 
 const Exercises = () => {
+  const axios = require('axios');
   const [exercisesData, setExercisesData] = useState(null);
   const [selectedMuscle, setSelectedMuscle] = useState('biceps');
+  const [isOpen, setIsOpen] = useState(false);
+  const [muscleIndex, setMuscleIndex] = useState(null);
   const muscleOptions = [
     'biceps',
     'abdominals',
@@ -21,7 +25,10 @@ const Exercises = () => {
     'triceps',
   ];
 
-  const axios = require('axios');
+  const togglePopup = (i) => {
+    setMuscleIndex(i);
+    setIsOpen(!isOpen);
+  };
 
   useEffect(() => {
     axios
@@ -70,7 +77,22 @@ const Exercises = () => {
             <li>{exercise.muscle}</li>
             <li>{exercise.equipment}</li>
             <li>{exercise.difficulty}</li>
-            <li>{exercise.instructions}</li>
+            <li>{exercise.instructions.slice(0, 30)}</li>
+            {isOpen && muscleIndex === muscleIndex && (
+              <Popup
+                content={
+                  <>
+                    <p>{exercise.instructions.slice(30)}</p>
+                  </>
+                }
+              />
+            )}
+            <input
+              id="muscleButton"
+              type="button"
+              value="See More"
+              onClick={() => togglePopup(muscleIndex)}
+            />
           </ul>
         ))}
       </form>
