@@ -67,9 +67,14 @@ const CalculatorBMI = () => {
     let result = getBmi(bmiResult);
     setResult(result);
     setHeight('');
-    ~setWeight('');
+    setWeight('');
   };
-
+  const resetValues = () => {
+    setHeight(null);
+    setWeight(null);
+    setBmi(null);
+    setResult(null);
+  };
   const getBmi = (bmi) => {
     if (bmi < 18.5) return 'Underweight';
     else if (bmi >= 18.5 && bmi < 24.9) return 'Normal Weight';
@@ -87,6 +92,7 @@ const CalculatorBMI = () => {
             placeholder="cm.."
             value={height}
             onChange={(e) => setHeight(e.target.value)}
+            required
           />
         </InputWrapper>
         <InputWrapper>
@@ -96,13 +102,17 @@ const CalculatorBMI = () => {
             placeholder="kg.."
             value={weight}
             onChange={(e) => setWeight(e.target.value)}
+            required
           />
         </InputWrapper>
-        <Button type="button" onClick={handleBMI}>
+        <Button type="submit" onClick={handleBMI}>
           Calculate BMI
         </Button>
         <Result>Your BMI is: {bmi}</Result>
         <Result>Your weight: {result}</Result>
+        <Button type="button" onClick={resetValues}>
+          Refresh
+        </Button>
       </Form>
     </Wrapper>
   );
