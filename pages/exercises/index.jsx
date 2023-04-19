@@ -6,23 +6,23 @@ import Popup from '@/components/Popup';
 const Exercises = () => {
   const axios = require('axios');
   const [exercisesData, setExercisesData] = useState(null);
-  const [selectedMuscle, setSelectedMuscle] = useState('biceps');
+  const [selectedMuscle, setSelectedMuscle] = useState('Biceps');
   const [isOpen, setIsOpen] = useState(false);
   const [muscleIndex, setMuscleIndex] = useState(null);
   const muscleOptions = [
-    'biceps',
-    'abdominals',
-    'calves',
-    'chest',
-    'forearms',
-    'glutes',
-    'lats',
-    'lower_back',
-    'middle_back',
-    'neck',
-    'quadriceps',
-    'traps',
-    'triceps',
+    'Biceps',
+    'Abdominals',
+    'Calves',
+    'Chest',
+    'Forearms',
+    'Glutes',
+    'Lats',
+    'Lower back',
+    'Middle back',
+    'Neck',
+    'Quadriceps',
+    'Traps',
+    'Triceps',
   ];
 
   const togglePopup = (i) => {
@@ -45,6 +45,7 @@ const Exercises = () => {
             id: uuidv4(),
           };
         });
+
         setExercisesData(dataWithIds);
       })
       .catch((error) => {
@@ -70,15 +71,15 @@ const Exercises = () => {
         ))}
       </select>
       <form>
-        {exercisesData.map((exercise) => (
-          <ul key={exercise.id}>
+        {exercisesData.map((exercise, index) => (
+          <ul key={index}>
             <li>{exercise.name}</li>
             <li>{exercise.type}</li>
             <li>{exercise.muscle}</li>
             <li>{exercise.equipment}</li>
             <li>{exercise.difficulty}</li>
             <li>{exercise.instructions.slice(0, 30)}</li>
-            {isOpen && muscleIndex === muscleIndex && (
+            {isOpen && index === muscleIndex && (
               <Popup
                 content={
                   <>
@@ -91,7 +92,7 @@ const Exercises = () => {
               id="muscleButton"
               type="button"
               value="See More"
-              onClick={() => togglePopup(muscleIndex)}
+              onClick={() => togglePopup(index)}
             />
           </ul>
         ))}
