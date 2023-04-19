@@ -1,57 +1,58 @@
 import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
+
 const Wrapper = styled.div`
   font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-`;
 
-const Form = styled.form`
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 32px;
-  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
-`;
-
-const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 16px;
-`;
-
-const Label = styled.label`
-  font-weight: bold;
-  margin-bottom: 8px;
-`;
-
-const Input = styled.input`
-  border: none;
-  border-radius: 44px;
-  padding: 8px;
-  font-size: 16px;
-  margin-bottom: 8px;
-`;
-
-const Button = styled.button`
-  background-color: #008080;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 8px 16px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: #006666;
+  form {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 32px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
   }
-`;
 
-const Result = styled.h2`
-  margin-top: 16px;
+  div[id='inputs'] {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+  }
+
+  label {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  input {
+    border: none;
+    border-radius: 44px;
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  button {
+    background-color: #008080;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #006666;
+    }
+  }
+
+  h2 {
+    margin-top: 16px;
+  }
 `;
 
 const CalculatorBMI = () => {
@@ -84,36 +85,36 @@ const CalculatorBMI = () => {
 
   return (
     <Wrapper>
-      <Form>
-        <InputWrapper>
-          <Label htmlFor="height">Height</Label>
-          <Input
+      <form>
+        <div id="inputs">
+          <label htmlFor="height">Height</label>
+          <input
             type="text"
             placeholder="cm.."
             value={height}
             onChange={(e) => setHeight(e.target.value)}
             required
           />
-        </InputWrapper>
-        <InputWrapper>
-          <Label htmlFor="weight">Weight</Label>
-          <Input
+        </div>
+        <div id="inputs">
+          <label htmlFor="weight">Weight</label>
+          <input
             type="text"
             placeholder="kg.."
             value={weight}
             onChange={(e) => setWeight(e.target.value)}
             required
           />
-        </InputWrapper>
-        <Button type="submit" onClick={handleBMI}>
+        </div>
+        <button type="submit" onClick={handleBMI}>
           Calculate BMI
-        </Button>
-        <Result>Your BMI is: {bmi}</Result>
-        <Result>Your weight: {result}</Result>
-        <Button type="button" onClick={resetValues}>
+        </button>
+        <h2>Your BMI is: {bmi}</h2>
+        <h2>Your weight: {result}</h2>
+        <button type="button" onClick={resetValues}>
           Refresh
-        </Button>
-      </Form>
+        </button>
+      </form>
     </Wrapper>
   );
 };
