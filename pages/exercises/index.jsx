@@ -4,14 +4,29 @@ import { v4 as uuidv4 } from 'uuid';
 
 const Exercises = () => {
   const [exercisesData, setExercisesData] = useState(null);
+  const [selectedMuscle, setSelectedMuscle] = useState('biceps');
+  const muscleOptions = [
+    'biceps',
+    'abdominals',
+    'calves',
+    'chest',
+    'forearms',
+    'glutes',
+    'lats',
+    'lower_back',
+    'middle_back',
+    'neck',
+    'quadriceps',
+    'traps',
+    'triceps',
+  ];
 
   const axios = require('axios');
 
-  const muscle = 'biceps';
   useEffect(() => {
     axios
       .get('https://api.api-ninjas.com/v1/exercises', {
-        params: { muscle },
+        params: { muscle: selectedMuscle },
         headers: {
           'X-Api-Key': process.env.API_KEY,
         },
@@ -28,7 +43,7 @@ const Exercises = () => {
       .catch((error) => {
         console.error('Request failed:', error);
       });
-  }, [muscle]);
+  }, [selectedMuscle]);
 
   if (!exercisesData) {
     return <div>Loading...</div>;
@@ -36,7 +51,17 @@ const Exercises = () => {
 
   return (
     <div>
-      <h1>Exercises for {muscle}</h1>
+      <h1>Exercises for {selectedMuscle}</h1>
+      <select
+        value={selectedMuscle}
+        onChange={(event) => setSelectedMuscle(event.target.value)}
+      >
+        {muscleOptions.map((muscle) => (
+          <option value={muscle} key={muscle}>
+            {muscle}
+          </option>
+        ))}
+      </select>
       <form>
         {exercisesData.map((exercise) => (
           <ul key={exercise.id}>
