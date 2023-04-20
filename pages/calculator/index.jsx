@@ -89,21 +89,19 @@ const CalculatorBMI = () => {
         <div id="inputs">
           <label htmlFor="height">Height</label>
           <input
-            type="text"
+            type="number"
             placeholder="cm.."
             value={height}
             onChange={(e) => setHeight(e.target.value)}
-            required
           />
         </div>
         <div id="inputs">
           <label htmlFor="weight">Weight</label>
           <input
-            type="text"
+            type="number"
             placeholder="kg.."
             value={weight}
             onChange={(e) => setWeight(e.target.value)}
-            required
           />
         </div>
         <button type="submit" onClick={handleBMI}>
