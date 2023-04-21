@@ -72,10 +72,10 @@ const CalculatorBMI = () => {
     setWeight('');
   };
   const resetValues = () => {
-    setHeight('');
-    setWeight('');
-    setBmi('');
-    setResult('');
+    setHeight(null);
+    setWeight(null);
+    setBmi(null);
+    setResult(null);
   };
   const getBmi = (bmi) => {
     if (bmi < 18.5) return 'Underweight';
