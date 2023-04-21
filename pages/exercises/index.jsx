@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Popup from '@/components/Popup';
 import styled from 'styled-components';
-import MobileNavbar from '@/components/MobileNavbar';
+
 const ExercisesWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -155,7 +155,6 @@ const Exercises = () => {
 
   return (
     <>
-      {/* <MobileNavbar /> */}
       <ExercisesWrapper>
         <div>
           <h1>Exercises for {selectedMuscle}</h1>

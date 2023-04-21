@@ -60,6 +60,7 @@ const CalculatorBMI = () => {
   const [weight, setWeight] = useState(null);
   const [bmi, setBmi] = useState(null);
   const [result, setResult] = useState(null);
+  const handleSubmit = (e) => e.preventDefault();
 
   const handleBMI = () => {
     let bmiResult = (weight / (height / 100) ** 2).toFixed(2);
@@ -71,10 +72,10 @@ const CalculatorBMI = () => {
     setWeight('');
   };
   const resetValues = () => {
-    setHeight(null);
-    setWeight(null);
-    setBmi(null);
-    setResult(null);
+    setHeight('');
+    setWeight('');
+    setBmi('');
+    setResult('');
   };
   const getBmi = (bmi) => {
     if (bmi < 18.5) return 'Underweight';
@@ -85,7 +86,7 @@ const CalculatorBMI = () => {
 
   return (
     <Wrapper>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div id="inputs">
           <label htmlFor="height">Height</label>
           <input
