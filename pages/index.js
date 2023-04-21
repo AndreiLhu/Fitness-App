@@ -13,22 +13,22 @@ const Container = styled.div`
   height: 70vh;
   background-color: #fff;
   border-radius: 8px;
-  padding: 32px;
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
 
   div[id='iconContainer'] {
     display: flex;
     justify-content: space-between;
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 32px;
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
   }
   a {
     margin: 0 16px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+    &:hover {
+      background-color: #f4f4f4;
+    }
   }
   h1 {
-    padding-bottom: 8em;
+    padding-bottom: 6em;
   }
 `;
 
@@ -42,19 +42,19 @@ export default function Home() {
             <Image
               src="/exercises.svg"
               alt="exercises"
-              width="100"
-              height="100"
+              width="80"
+              height="80"
             />
           </Link>
           <Link className="white" href={'/recipe'}>
-            <Image src="/recipe.svg" alt="recipes" width="100" height="100" />
+            <Image src="/recipe.svg" alt="recipes" width="80" height="80" />
           </Link>
           <Link className="white" href={'/calculator'}>
             <Image
               src="/calculator.svg"
               alt="calculator"
-              width="100"
-              height="100"
+              width="80"
+              height="80"
             />
           </Link>
         </div>
