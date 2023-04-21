@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Popup from '@/components/Popup';
 import styled from 'styled-components';
+
 const ExercisesWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -153,52 +154,54 @@ const Exercises = () => {
   }
 
   return (
-    <ExercisesWrapper>
-      <div>
-        <h1>Exercises for {selectedMuscle}</h1>
-        <select
-          value={selectedMuscle}
-          onChange={(event) => setSelectedMuscle(event.target.value)}
-        >
-          {muscleOptions.map((muscle) => (
-            <option value={muscle} key={muscle}>
-              {muscle}
-            </option>
-          ))}
-        </select>
-        <form>
-          {exercisesData.map((exercise, index) => (
-            <ul key={index}>
-              <h2>{exercise.name}</h2>
-              <li>Type: {exercise.type}</li>
-              <li>Exercices for: {exercise.muscle}</li>
-              <li>Equipment: {exercise.equipment}</li>
-              <li>Difficulty: {exercise.difficulty}</li>
-              <p>
-                Instructions: <br />
-                <br />
-                {exercise.instructions.slice(0, 100)}
-              </p>
-              {isOpen && index === muscleIndex && (
-                <Popup
-                  content={
-                    <>
-                      <p>{exercise.instructions.slice(100)}</p>
-                    </>
-                  }
+    <>
+      <ExercisesWrapper>
+        <div>
+          <h1>Exercises for {selectedMuscle}</h1>
+          <select
+            value={selectedMuscle}
+            onChange={(event) => setSelectedMuscle(event.target.value)}
+          >
+            {muscleOptions.map((muscle) => (
+              <option value={muscle} key={muscle}>
+                {muscle}
+              </option>
+            ))}
+          </select>
+          <form>
+            {exercisesData.map((exercise, index) => (
+              <ul key={index}>
+                <h2>{exercise.name}</h2>
+                <li>Type: {exercise.type}</li>
+                <li>Exercices for: {exercise.muscle}</li>
+                <li>Equipment: {exercise.equipment}</li>
+                <li>Difficulty: {exercise.difficulty}</li>
+                <p>
+                  Instructions: <br />
+                  <br />
+                  {exercise.instructions.slice(0, 100)}
+                </p>
+                {isOpen && index === muscleIndex && (
+                  <Popup
+                    content={
+                      <>
+                        <p>{exercise.instructions.slice(100)}</p>
+                      </>
+                    }
+                  />
+                )}
+                <input
+                  id="muscleButton"
+                  type="button"
+                  value={isOpen && index === muscleIndex ? 'Close' : 'See More'}
+                  onClick={() => togglePopup(index)}
                 />
-              )}
-              <input
-                id="muscleButton"
-                type="button"
-                value={isOpen && index === muscleIndex ? 'Close' : 'See More'}
-                onClick={() => togglePopup(index)}
-              />
-            </ul>
-          ))}
-        </form>
-      </div>
-    </ExercisesWrapper>
+              </ul>
+            ))}
+          </form>
+        </div>
+      </ExercisesWrapper>
+    </>
   );
 };
 export default Exercises;
