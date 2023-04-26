@@ -4,37 +4,58 @@ import axios from 'axios';
 
 const Recipe = () => {
   const [recipesData, setRecipesData] = useState(null);
-  const [selectedRecipe, setSelectedRecipe] = useState('italian wedding soup');
 
+  const [searchQuery, setSearchQuery] = useState('');
   const axios = require('axios');
-  const query = 'italian wedding soup';
-  useEffect(() => {
+
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleSearchFormSubmit = (event) => {
+    event.preventDefault();
     axios
-      .get(`https://api.api-ninjas.com/v1/recipe?query=${query}`, {
+      .get(`https://api.api-ninjas.com/v1/recipe?query=${searchQuery}`, {
         headers: {
           'X-Api-Key': process.env.API_KEY,
         },
       })
       .then((response) => {
-        const dataWithIds = response.data.map((item) => {
-          return {
-            ...item,
-            id: uuidv4(),
-          };
-        });
-
-        setRecipesData(dataWithIds);
+        setRecipesData(response.data);
       })
       .catch((error) => {
         console.error('Request failed:', error);
       });
-  }, [selectedRecipe]);
+  };
 
   if (!recipesData) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <h1>Recipes</h1>
+        <form onSubmit={handleSearchFormSubmit}>
+          <input
+            type="text"
+            placeholder="Search for recipes"
+            value={searchQuery}
+            onChange={handleSearchInputChange}
+          />
+          <button type="submit">Search</button>
+        </form>
+      </div>
+    );
   }
+
   return (
     <div>
+      <form onSubmit={handleSearchFormSubmit}>
+        <input
+          type="text"
+          placeholder="Search for recipes"
+          value={searchQuery}
+          onChange={handleSearchInputChange}
+        />
+        <button type="submit">Search</button>
+      </form>
       <form>
         {recipesData.map((recipes, index) => (
           <ul key={index}>
