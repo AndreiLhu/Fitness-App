@@ -4,11 +4,14 @@ import { v4 as uuidv4 } from 'uuid';
 import Popup from '@/components/Popup';
 import styled from 'styled-components';
 
+import Image from 'next/image';
 const ExercisesWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
+ 
+  
 
   h1 {
     margin-bottom: 10px;
@@ -32,6 +35,8 @@ const ExercisesWrapper = styled.div`
   }
 
   ul {
+      
+
     background: rgb(255, 255, 255);
     background: linear-gradient(
       90deg,
@@ -48,24 +53,33 @@ const ExercisesWrapper = styled.div`
     list-style-type: none;
     margin: 0;
     padding: 0;
-    border: 1px solid #eee;
+
     border-radius: 5px;
     margin-bottom: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     width: 100%;
     max-width: 500px;
     overflow: hidden;
+     }
+    img {
+      max-width: 100%;
+      height: auto;
+
+    }
 
     h2 {
+      position: absolute;
+      color: white;
       padding-left: 10px;
       border-bottom: 1px solid #eee;
       border-radius: 5px;
     }
 
     li {
+      
       padding: 10px;
+
       font-size: 1.2rem;
-      border-bottom: 1px solid #eee;
 
       &:last-child {
         border-bottom: none;
@@ -108,6 +122,7 @@ const ExercisesWrapper = styled.div`
       margin-right: 20px;
       margin-bottom: 0;
       width: auto;
+      
     }
   }
 `;
@@ -178,6 +193,7 @@ const Exercises = () => {
       <ExercisesWrapper>
         <div>
           <h1>Exercises for {selectedMuscle}</h1>
+
           <select
             value={selectedMuscle}
             onChange={(event) => setSelectedMuscle(event.target.value)}
@@ -192,10 +208,12 @@ const Exercises = () => {
             {exercisesData.map((exercise, index) => (
               <ul key={index}>
                 <h2>{exercise.name}</h2>
+                <Image src="/gym.jpg" alt="gym" width="600" height="364" />
                 <li>Type: {exercise.type}</li>
                 <li>Exercices for: {exercise.muscle}</li>
                 <li>Equipment: {exercise.equipment}</li>
                 <li>Difficulty: {exercise.difficulty}</li>
+
                 <p>
                   Instructions: <br />
                   <br />
