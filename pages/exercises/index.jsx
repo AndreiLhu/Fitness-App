@@ -32,6 +32,19 @@ const ExercisesWrapper = styled.div`
   }
 
   ul {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(243, 243, 243, 1) 5%,
+      rgba(214, 214, 214, 1) 21%,
+      rgba(181, 181, 181, 1) 43%,
+      rgba(142, 142, 142, 1) 65%,
+      rgba(117, 117, 117, 1) 85%,
+      rgba(90, 90, 90, 1) 100%,
+      rgba(66, 66, 66, 1) 100%,
+      rgba(0, 0, 0, 1) 100%
+    );
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -98,6 +111,9 @@ const ExercisesWrapper = styled.div`
     }
   }
 `;
+const Loading = styled.p`
+  color: white;
+`;
 
 const Exercises = () => {
   const axios = require('axios');
@@ -150,7 +166,11 @@ const Exercises = () => {
   }, [selectedMuscle]);
 
   if (!exercisesData) {
-    return <div>Loading...</div>;
+    return (
+      <Loading>
+        <p>Loading...</p>
+      </Loading>
+    );
   }
 
   return (
