@@ -21,7 +21,7 @@ const Container = styled.div`
     display: flex;
     justify-content: space-between;
     position: absolute;
-    margin-top: 15vh;
+    margin-top: 55vh;
   }
 
   img[id='mainImage'] {
