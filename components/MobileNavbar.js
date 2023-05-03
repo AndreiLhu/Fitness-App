@@ -7,11 +7,11 @@ import styled from 'styled-components';
 
 const NavbarContainer = styled.div`
   display: flex;
-  
   justify-content: space-between;
   align-items: center;
   height: 60px;
-  background-color: #f8f8f8;
+  background-color:background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(98,98,98,1) 0%, rgba(176,176,176,1) 54%, rgba(57,57,57,1) 100%, rgba(0,0,0,1) 100%);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
 
 
@@ -26,7 +26,7 @@ a {
 
 
   &:hover {
-    color: #0070f3;
+    color: #f4f4f4;
   }
 
   &:last-child {

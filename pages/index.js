@@ -10,24 +10,44 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 70vh;
-  background-color: #fff;
-  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  height: 50vh;
+  @media only screen and (min-width: 768px) {
+     {
+      height: 100vh;
+    }
+  }
 
   div[id='iconContainer'] {
     display: flex;
     justify-content: space-between;
+    position: absolute;
+    margin-top: 15vh;
+  }
+
+  img[id='mainImage'] {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  @media only screen and (min-width: 768px) {
+    img[id='mainImage'] {
+      position: relative;
+      width: 60%;
+      height: auto;
+      margin-top: 5vh;
+    }
+  }
+  h1 {
+    position: relative;
   }
   a {
     margin: 0 16px;
     border-radius: 8px;
+    background-color: rgba(142, 142, 142, 0.4);
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
     &:hover {
-      background-color: #f4f4f4;
+      background-color: rgba(243, 243, 243, 1);
     }
-  }
-  h1 {
-    padding-bottom: 6em;
   }
 `;
 
@@ -36,24 +56,31 @@ export default function Home() {
     <>
       <Container>
         <h1>Fitness App!</h1>
+        <Image
+          src="/main.jpg"
+          alt="main"
+          id="mainImage"
+          width="700"
+          height="400"
+        />
         <div id="iconContainer">
           <Link className="white" href={'/exercises'}>
             <Image
               src="/exercises.svg"
               alt="exercises"
-              width="80"
-              height="80"
+              width="60"
+              height="60"
             />
           </Link>
           <Link className="white" href={'/recipe'}>
-            <Image src="/recipe.svg" alt="recipes" width="80" height="80" />
+            <Image src="/recipe.svg" alt="recipes" width="60" height="60" />
           </Link>
           <Link className="white" href={'/calculator'}>
             <Image
               src="/calculator.svg"
               alt="calculator"
-              width="80"
-              height="80"
+              width="60"
+              height="60"
             />
           </Link>
         </div>

@@ -71,16 +71,13 @@ const ExercisesWrapper = styled.div`
       position: absolute;
       color: white;
       padding-left: 10px;
-      border-bottom: 1px solid #eee;
+      width: 60%;
       border-radius: 5px;
     }
 
-    li {
-      
-      padding: 10px;
-
+    li {     
+     padding: 10px;
       font-size: 1.2rem;
-
       &:last-child {
         border-bottom: none;
       }
@@ -181,11 +178,7 @@ const Exercises = () => {
   }, [selectedMuscle]);
 
   if (!exercisesData) {
-    return (
-      <Loading>
-        <p>Loading...</p>
-      </Loading>
-    );
+    return <Loading>Loading...</Loading>;
   }
 
   return (
