@@ -7,9 +7,10 @@ import styled from 'styled-components';
 
 const NavbarContainer = styled.div`
   display: flex;
+  border-radius: 5px;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+  height: 5vh;
   background-color:background: rgb(0,0,0);
 background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(98,98,98,1) 0%, rgba(176,176,176,1) 54%, rgba(57,57,57,1) 100%, rgba(0,0,0,1) 100%);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
@@ -17,7 +18,7 @@ background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(98,98,98,1) 0%, rgba(17
 
 a { 
   margin-right: 16px;
-  color: #333;
+  color: #222;
   text-decoration: none;
   font-size: 1.2rem;
   display: flex;
@@ -30,7 +31,10 @@ a {
   }
 
   &:last-child {
-    margin-right: 0;
+    margin-right: 5px;
+  }
+  &:first-child {
+    margin-left: 5px;
   }
 `;
 
