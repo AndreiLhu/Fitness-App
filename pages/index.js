@@ -43,7 +43,7 @@ const Container = styled.div`
   a {
     margin: 0 16px;
     border-radius: 8px;
-    background-color: rgba(142, 142, 142, 0.4);
+    background-color: whitesmoke;
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
     &:hover {
       background-color: rgba(243, 243, 243, 1);
