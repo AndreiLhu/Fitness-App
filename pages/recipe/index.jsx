@@ -30,19 +30,8 @@ const RecipesWrapper = styled.div`
   }
 
   ul {
-    background: rgb(255, 255, 255);
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(243, 243, 243, 1) 5%,
-      rgba(214, 214, 214, 1) 21%,
-      rgba(181, 181, 181, 1) 43%,
-      rgba(142, 142, 142, 1) 65%,
-      rgba(117, 117, 117, 1) 85%,
-      rgba(90, 90, 90, 1) 100%,
-      rgba(66, 66, 66, 1) 100%,
-      rgba(0, 0, 0, 1) 100%
-    );
+    background: whitesmoke;
+
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -56,14 +45,14 @@ const RecipesWrapper = styled.div`
 
     h2 {
       padding-left: 10px;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid gray;
       border-radius: 5px;
     }
 
     li {
       padding: 10px;
       font-size: 1.2rem;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid gray;
 
       &:last-child {
         border-bottom: none;

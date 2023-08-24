@@ -7,13 +7,14 @@ import styled from 'styled-components';
 
 const NavbarContainer = styled.div`
   display: flex;
-
   justify-content: space-between;
   align-items: center;
   height: 5vh;
-  background-color:background: rgb(0,0,0);
-background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(98,98,98,1) 0%, rgba(176,176,176,1) 54%, rgba(57,57,57,1) 100%, rgba(0,0,0,1) 100%);
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: whitesmoke;
+ box-shadow: 0 0.5px 1px 0 rgba(0, 0, 0, 0.2);
+
+
+
 
 
 a { 
